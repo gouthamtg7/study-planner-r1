@@ -1,144 +1,104 @@
-\# Smart Study Planner using Reinforcement Learning
+# Smart Study Planner using Reinforcement Learning
 
+## Problem Statement
+This project models a decision-making system where an agent learns to balance study sessions and breaks to maximize productivity while minimizing fatigue over time.
 
+## SDG Mapping
+**SDG 3 – Good Health and Well-being**  
+The system promotes healthier study habits by preventing burnout and encouraging balanced cognitive effort.
 
-\## Problem Statement
+---
 
+## Reinforcement Learning Setup
 
+### State Space
+The environment is represented by:
+- Focus level  
+- Fatigue level  
+- Time remaining  
 
-This project models a study planner where an agent learns to balance study sessions and breaks to maximize productivity while minimizing fatigue.
+State format:
+(focus_level, fatigue_level, time_remaining)
 
+### Action Space
+- 0 → Study  
+- 1 → Take Break  
 
+### Reward Function
+- Positive reward for productive study  
+- Negative penalty for fatigue accumulation  
 
-\## SDG Mapping
+This allows the agent to balance short-term gains with long-term well-being.
 
+---
 
+## Algorithm Used
+Q-learning was chosen because the state space is discrete and small, making tabular learning efficient.
 
-SDG 3 – Good Health and Well-being
+---
 
+## Exploration Strategy
+An ε-greedy strategy is used:
+- Encourages exploration initially  
+- Gradually shifts toward exploitation  
 
+---
 
-\## Reinforcement Learning Setup
-
-
-
-\* State: (focus level, fatigue level, time remaining)
-
-\* Action:
-
-
-
-&#x20; \* 0 → Study
-
-&#x20; \* 1 → Take Break
-
-\* Reward:
-
-
-
-&#x20; \* Positive for productivity
-
-&#x20; \* Negative for fatigue accumulation
-
-
-
-\## Algorithm Used
-
-
-
-Q-learning was chosen because the state space is discrete and manageable.
-
-
-
-\## Exploration Strategy
-
-
-
-ε-greedy strategy is used to balance exploration and exploitation.
-
-
-
-\## Training
-
-
+## Training
 
 Run the following command:
 
+python train.py --config configs/qlearning_v1.yaml
 
+---
 
-python train.py --config configs/qlearning\_v1.yaml
-
-
-
-\## Experiment Tracking
-
-
+## Experiment Tracking
 
 Results are stored in:
-
 experiments/results.csv
 
+### Metrics Tracked
+- Episode number  
+- Reward per episode  
 
-<img width="788" height="682" alt="image" src="https://github.com/user-attachments/assets/fe5a585e-8a07-4c1b-a207-cf4161be811d" />
+---
 
+## Training Visualization
 
-
-
-Metrics tracked:
-
-
-
-\* Episode number
-
-\* Reward per episode
+<img width="788" height="682" alt="image" src="https://github.com/user-attachments/assets/48012eac-9485-429e-9384-c5ecf8ee7c25" />
 
 
+---
 
-\## Policies Saved
+## Policies Saved
+- policy_v1.pkl  
+- policy_v2_explored.pkl  
 
+---
 
+## Observations
+- High variance in early stages due to exploration  
+- Rewards stabilize over time  
+- Indicates convergence toward an optimal policy  
 
-\* policy\_v1.pkl
+---
 
-\* policy\_v2\_explored.pkl
+## MLOps Practices
+- Version control using Git commits  
+- Experiment tracking via CSV logs  
+- Reproducibility using configuration files  
 
+---
 
+## Monitoring Plan (Real-world Deployment)
 
-\## Observations
+If deployed, the system would monitor:
+- Average focus levels  
+- Fatigue trends  
+- Frequency of breaks  
+- System stability to prevent burnout  
 
+---
 
-
-Initially, the agent explores randomly, resulting in high variance in rewards. Over time, the rewards stabilize and improve, indicating convergence towards an optimal policy.
-
-
-
-\## MLOps Practices
-
-
-
-\* Version control using Git commits
-
-\* Experiment tracking via CSV logs
-
-\* Reproducibility using config files
-
-
-
-\## Monitoring Plan (Real-world Deployment)
-
-
-
-If deployed, we would monitor:
-
-
-
-\* Average focus level
-
-\* Fatigue levels
-
-\* Frequency of breaks
-
-\* System stability to prevent burnout scenarios
-
-
-
+## Conclusion
+This project demonstrates how reinforcement learning can model human productivity behavior by optimizing the balance between effort and recovery.
