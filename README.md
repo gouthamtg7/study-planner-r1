@@ -79,6 +79,10 @@ Results are stored in:
 experiments/results.csv
 
 
+<img width="788" height="682" alt="image" src="https://github.com/user-attachments/assets/fe5a585e-8a07-4c1b-a207-cf4161be811d" />
+
+
+
 
 Metrics tracked:
 
